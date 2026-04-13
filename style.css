@@ -1,0 +1,180 @@
+/* RESET */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #2f3640;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  background: #40739e;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #273c75;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* PAGE */
+.page {
+  display: none;
+}
+.page.active {
+  display: block;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px; /* 🔥 agar tidak melebar */
+  margin: 0 auto 20px auto; /* 🔥 center */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* FORM */
+.card input,
+.card select {
+  width: 100%;
+  padding: 0px;
+  padding-top:5px;
+  margin-top: 10px;
+  padding-bottom:5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.card button {
+  margin-top: 15px;
+  padding: 12px;
+  background: #44bd32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: #2ecc71;
+}
+
+/* LIST */
+.list {
+  max-width: 600px;
+  margin: auto;
+}
+
+.list div {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* STATUS BADGE */
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+}
+
+.status.READY {
+  background: #e1b12c;
+}
+
+.status.DALAM_PERJALANAN {
+  background: #0097e6;
+}
+
+.status.SELESAI {
+  background: #44bd32;
+}
+
+/* AUTOCOMPLETE */
+.suggestions {
+  position: absolute;
+  background: white;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestions div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions div:hover {
+  background: #f1f1f1;
+}
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sidebar button {
+    flex: 1;
+    margin: 5px;
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .list {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Admin Kurir</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Admin</h2>
+
+    <button onclick="showPage('input')">📦 Input Pesanan</button>
+    <button onclick="showPage('riwayat')">📅 Riwayat</button>
+	<button onclick="showPage('rekap')">📊 Rekap Kurir</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- INPUT -->
+    <div id="inputPage" class="page active">
+      <h2>Input Pengiriman</h2>
+
+		<div class="card">
+
+		  <div style="position:relative;">
+			<input id="rute" placeholder="Cari Rute" autocomplete="off">
+			<div id="suggestions" class="suggestions"></div>
+		  </div>
+
+		  <input id="km" placeholder="KM" readonly>
+		  <input id="ket" placeholder="Keterangan">
+
+		  <select id="jenis">
+			<option>Pengantaran</option>
+			<option>Pengambilan</option>
+		  </select>
+
+		  <button onclick="kirim()">Kirim</button>
+		</div>
+		
+      <h3>List Hari Ini</h3>
+      <div id="listHariIni" class="list"></div>
+    </div>
+
+    <!-- RIWAYAT -->
+    <div id="riwayatPage" class="page">
+      <h2>Riwayat</h2>
+
+      <div class="card">
+        <input type="date" id="tanggal" onchange="filterTanggal()">
+      </div>
+
+      <div id="listRiwayat" class="list"></div>
+    </div>
+	<div id="rekapPage" class="page">
+	  <h2>Rekap Kurir</h2>
+
+	  <div id="listKurir" class="list"></div>
+
+	  <div id="detailRekap" style="display:none;">
+		
+		<div class="card">
+		  <h3 id="namaKurir"></h3>
+
+		  <input type="date" id="tglAwal">
+		  <input type="date" id="tglAkhir">
+		  <button onclick="filterRekap()">Filter</button>
+		</div>
+
+		<div id="tabelRekap"></div>
+	 </div>
+	</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
