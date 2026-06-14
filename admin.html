@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Rekap</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<div class="topbar">
+  📊 Dashboard Rekap
+  <span class="menuIcon" onclick="toggleSidebar()">☰</span>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <button onclick="setPage('pesanan', true)">Pesanan</button>
+
+  <button onclick="toggleSubmenu()">Rekap ▼</button>
+  <div id="submenu" class="submenu">
+    <button onclick="setPage('rekapUser', true)">- Pengguna</button>
+    <button onclick="setPage('insentif', true)">- Insentif</button>
+  </div>
+</div>
+
+<div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+<div id="pagePesanan" class="page">
+
+  <div class="card">
+
+    <h3>Buat Perjalanan</h3>
+
+    <div style="position:relative;">
+      <input id="rute" placeholder="Cari Rute" autocomplete="off">
+      <div id="suggestions" class="suggestions"></div>
+      <div id="errorRute" class="errorText"></div>
+    </div>
+
+    <input id="km" placeholder="KM" readonly>
+
+    <input id="ket" placeholder="Keterangan">
+
+    <select id="jenis">
+      <option>Pengantaran</option>
+      <option>Pengambilan</option>
+    </select>
+
+    <button id="btnKirim" onclick="kirim()">Buat Perjalanan
+	</button>
+
+  </div>
+
+  <div class="filterBar">
+    <input type="date" id="filterTanggal" onchange="renderPesanan()">
+  </div>
+  <div id="rekapScroll">
+    <div id="listPesanan"></div>
+  </div>
+</div>
+
+<div id="pageRekapUser" class="page">
+  <div id="userBoxContainer"></div>
+  <div id="rekapScroll">
+    <div id="listRekap"></div>
+  </div>
+</div>
+
+<div id="pageInsentif" class="page">
+
+  <div class="insentifHeader">
+    <div>
+      <input type="date" id="tglAwal">
+      -
+      <input type="date" id="tglAkhir">
+    </div>
+
+    <div>
+      <select id="kurirSelect"></select>
+    </div>
+  </div>
+
+  <div class="tableBox">
+    <table>
+      <thead>
+        <tr>
+          <th>Tanggal</th>
+          <th>Jarak</th>
+          <th>Parkir</th>
+          <th>Pesanan</th>
+          <th>Pendapatan</th>
+        </tr>
+      </thead>
+      <tbody id="tableInsentif"></tbody>
+    </table>
+  </div>
+
+  <button onclick="showPrintPopup()" class="printBtn">Cetak</button>
+
+</div>
+
+<div id="popup" class="popup" onclick="closePopup()">
+<div class="popupContent" id="popupContent" onclick="event.stopPropagation()"></div>
+</div>
+<div id="popupRute" class="popupRute">
+
+  <div class="popupRuteContent">
+
+    <h3>Tambah Rute Baru</h3>
+
+    <input
+      type="text"
+      id="newRute"
+      placeholder="Nama Rute">
+
+    <input
+      type="number"
+      id="newKm"
+      placeholder="Jarak (KM)">
+
+    <div class="popupBtnGroup">
+      <button onclick="simpanRute()">
+        Simpan
+      </button>
+
+      <button
+        class="btnBatal"
+        onclick="closeRutePopup()">
+        Batal
+      </button>
+    </div>
+
+  </div>
+
+</div>
+<script src="js/config.js"></script>
+<script src="js/state.js"></script>
+<script src="js/utils.js"></script>
+
+<script src="js/sidebar.js"></script>
+
+<script src="js/pesanan/pesanan-api.js"></script>
+<script src="js/pesanan/pesanan-action.js"></script>
+<script src="js/pesanan/pesanan-render.js"></script>
+
+<script src="js/rute/rute-api.js"></script>
+<script src="js/rute/rute-autocomplete.js"></script>
+
+<script src="js/rekap/rekap-user.js"></script>
+<script src="js/rekap/rekap-render.js"></script>
+
+<script src="js/insentif/insentif-api.js"></script>
+<script src="js/insentif/insentif-render.js"></script>
+
+<script src="js/app.js"></script>
+</body>
+</html>
