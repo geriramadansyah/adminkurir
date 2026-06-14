@@ -164,7 +164,7 @@ function renderRekap(){
 
 			<option value="sederhana"
 			  ${rekapViewMode==="sederhana" ? "selected" : ""}>
-			  Sederhana
+			  Ringkas
 			</option>
 
 		  </select>
